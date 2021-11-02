@@ -1,26 +1,18 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import PopularMovies from "./src/features/PopularMovies";
-
-
+import Home from "./src/screens/Home/Home";
+import {NavigationContainer} from '@react-navigation/native'
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Detail from './src/screens/Detail'
+const Stack = createNativeStackNavigator();
 const _APP = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <PopularMovies />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Detail" component={Detail} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
 export default _APP;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

@@ -1,10 +1,11 @@
 import axios from 'axios'
 import {useQuery} from 'react-query'
+import {BASE_URL, API_KEY} from '../../../utils/envConstants'
 
-export const getPopularMovies = () => {
-    const endpoint =
-      "https://api.themoviedb.org/3/movie/popular?api_key=3a21d1cd8a2a16c068ee04b06e631e0c";
+ const getPopularMovies = () => {
+    const endpoint =`${BASE_URL}movie/popular?${API_KEY}`;
     return useQuery('getPopularMovies', ()=>{
         return axios.get(endpoint);
     })
 }
+export default getPopularMovies;
