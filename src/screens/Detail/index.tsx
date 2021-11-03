@@ -10,7 +10,7 @@ import PlayButton from '../../components/PlayButton';
 import VideoPlayer from '../../components/Video'
 
 
-const Detail = ({route, navigation}) => {
+const Detail = ({route}) => {
     const movieId = route.params.movieId;
 
     const { isLoading, error, data } = getMovie(movieId);
@@ -22,10 +22,10 @@ const Detail = ({route, navigation}) => {
         setModalVisible(!modalVisible);
     }
     
-    console.log("i am here now", data?.data)
+    // console.log("i am here now", data?.data)
         return (
-          <>
-            <ScrollView>
+          < >
+            <ScrollView style={styles.background}>
               {error && (
                 <Error
                   erroText1={JSON.stringify(error)}
@@ -42,7 +42,7 @@ const Detail = ({route, navigation}) => {
                     style={styles.image}
                     source={
                       movieDetail.poster_path
-                        ? { uri: IMAGE_URI + movieDetail.poster_path }
+                        ? { uri: IMAGE_URI + movieDetail.backdrop_path }
                         : imagePlaceHolder
                     }
                   />
@@ -68,7 +68,7 @@ const Detail = ({route, navigation}) => {
                         })}
                       </View>
                     )}
-                    {/* showing vote_average with star rating */}
+                    {/* showing vote_average with star rating libary */}
                     <StarRating
                       disabled={true}
                       maxStars={5}
@@ -98,12 +98,11 @@ const Detail = ({route, navigation}) => {
                 </>
               )}
             </ScrollView>
-            <Modal animationType="slide" visible={modalVisible}>
+            <Modal animationType="slide" visible={modalVisible} style={styles.container}>
               <View style={styles.videoModal}>
+                <VideoPlayer onClose={showVideo} video_id={movieId} />
                 <TouchableOpacity onPress={() => showVideo()}>
-                  <Text> {"close"}</Text>
                 </TouchableOpacity>
-                <VideoPlayer onClose={showVideo} />
               </View>
             </Modal>
           </>
