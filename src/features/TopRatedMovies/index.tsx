@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { View, Dimensions, ActivityIndicator} from "react-native";
+import { View, Dimensions, ActivityIndicator } from "react-native";
 import { useRecoilState } from "recoil";
 import { errorState } from "../../recoilStore/Atoms";
 import { getTopRatedMovies } from "../../services/api/movies";
-import { SliderBox } from "react-native-image-slider-box";
 import { styles } from "./styles";
 import List from "../../components/List";
 
-// interface IpopularMovies {
-//     movieImages:string
-// }
-//getting the screen height
 const dimentions = Dimensions.get("screen");
-// console.log("hhhhhhh",dimentions)
+
 const TopRatedMovies = ({ navigation }) => {
   const { isLoading, error, data } = getTopRatedMovies();
 
@@ -29,8 +24,6 @@ const TopRatedMovies = ({ navigation }) => {
   useEffect(() => {
     setTopRatedMovies(movies);
   }, [movies]);
-
-  // console.log("here too", topRatedMovies);
 
   return (
     <View style={styles.carousel}>

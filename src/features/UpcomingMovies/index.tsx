@@ -7,15 +7,9 @@ import { SliderBox } from "react-native-image-slider-box";
 import { styles } from "./styles";
 import { IMAGE_URI } from "../../utils/envConstants";
 
-// interface IpopularMovies {
-//     movieImages:string
-// }
-//getting the screen height
 const dimentions = Dimensions.get("screen");
-console.log("hhhhhhh", dimentions);
-const UpcomingMovies = () => {
-  // const { isLoading, error, data } = getPopularMovies();
 
+const UpcomingMovies = () => {
   const { isLoading, error, data } = getUpcomingMovies();
   const [movieImagePaths, setMovieImagePaths] = useState([]);
   const [upComingMoviesError, setUpComingMoviesError] =
@@ -31,17 +25,12 @@ const UpcomingMovies = () => {
     const moviesPaths = [];
 
     data?.data?.results?.forEach((movie) => {
-      // let moviesPaths = [];
       let imagePath = `${IMAGE_URI}${movie?.poster_path}`;
       moviesPaths.push(imagePath);
-      // console.log(movie?.poster_path);
+
       setMovieImagePaths(moviesPaths);
     });
-    // setMovieImagePaths(movies?.poster_path);
   }, [movies]);
-
-  // console.log("here too", movieImagePaths);
-  // console.log("here", movies);
 
   return (
     <View style={styles.sliderContainer}>

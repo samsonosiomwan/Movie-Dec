@@ -12,20 +12,9 @@ import * as Network from "expo-network";
 import { useRecoilState } from "recoil";
 import { offlineState } from "../../recoilStore/Atoms";
 
-//   Network.getNetworkStateAsync().then(
-//   (value)=>{
-//    console.log( value)
-//   }
-// ).catch((error)=>{
-//   console.log(error)
-// });
-
 const Home = ({ navigation }) => {
   const error = useRecoilValue(errorState);
-  // const connectionStatus = async () =>{
-  // const {isConnected, isInternetReachable} = await Network.getNetworkStateAsync();
-  // return isConnected
-  //  }
+
   const [online, setOnline] = useState(true);
   const [offlineStatus, setOfflineStatus] = useRecoilState(offlineState);
   useEffect(() => {

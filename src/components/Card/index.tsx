@@ -1,25 +1,25 @@
-import React from 'react'
-import {TouchableOpacity, Image, Text} from 'react-native'
-import {styles} from './styles'
-import {IMAGE_URI} from '../../utils/envConstants'
-import {imagePlaceHolder} from '../../utils/ImagePlaceHolder'
+import React from "react";
+import { TouchableOpacity, Image, Text } from "react-native";
+import { styles } from "./styles";
+import { IMAGE_URI } from "../../utils/envConstants";
+import { imagePlaceHolder } from "../../utils/ImagePlaceHolder";
 import { useRecoilValue } from "recoil";
 import { offlineState } from "../../recoilStore/Atoms";
 
 interface Props {
   item: Record<string, any>;
-  navigation:any
+  navigation: any;
 }
 
-const Card = ({ navigation,item }: Props) => {
-const offline = useRecoilValue(offlineState);
+const Card = ({ navigation, item }: Props) => {
+  const offline = useRecoilValue(offlineState);
 
   return (
     <TouchableOpacity
       onPress={() => {
         navigation.navigate("Detail", { movieId: item.id });
       }}
-      style={offline ? styles.container : styles.offlineContainer }
+      style={offline ? styles.container : styles.offlineContainer}
     >
       <Image
         resizeMode="cover"
@@ -35,4 +35,4 @@ const offline = useRecoilValue(offlineState);
   );
 };
 
-export default Card
+export default Card;
