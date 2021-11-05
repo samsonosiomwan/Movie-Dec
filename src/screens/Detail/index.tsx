@@ -18,7 +18,7 @@ import PlayButton from "../../components/PlayButton";
 import VideoPlayer from "../../components/Video";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { favoriteMovieState } from "../../recoilStore/Atoms";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { constSelector, useRecoilState, useRecoilValue } from "recoil";
 
 const Detail = ({ route }) => {
   const movieId = route.params.movieId;
@@ -50,6 +50,11 @@ const Detail = ({ route }) => {
     } catch (error) {
       console.log("storing", error);
     }
+
+    //set recoil state
+    //  useEffect(() => {
+    //    saveFavorite(favoritMovie);
+    //  }, [favoritMovie]);
   };
 
   const getValue = () => {
@@ -125,16 +130,16 @@ const Detail = ({ route }) => {
               <Text
                 style={styles.popularity}
               >{`Vote Count : ${movieDetail.vote_count} `}</Text>
+              
+                {/* condition to check if movie has been added to favourite */}
 
-              {/* condition to check if movie has been added to favourite */}
-
-              {getfavorite[0].id === movieId ? (
+              {/* {getfavorite[0].id === movieId || undefined ? (
                 <Text style={styles.addToFavorite}>Added to favorite</Text>
-              ) : (
+              ) : ( */}
                 <TouchableOpacity onPress={addToFavorite}>
                   <Text style={styles.addToFavorite}>Add to favorite</Text>
                 </TouchableOpacity>
-              )}
+              {/* )} */}
               {/* <TouchableOpacity onPress={getValue}>
                 <Text style={styles.addToFavorite}>get value </Text>
                 <Text style={styles.addToFavorite}>{status} </Text>
