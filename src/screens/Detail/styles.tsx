@@ -26,6 +26,15 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     color: Colors.white,
   },
+  addToFavorite: {
+    borderWidth:1,
+    borderRadius:4,
+    borderColor: Colors.primary,
+    fontWeight: "bold",
+    color: Colors.primary,
+    marginTop:"2%",
+    padding:2
+  },
   movieTitle: {
     fontSize: 24,
     fontWeight: "bold",

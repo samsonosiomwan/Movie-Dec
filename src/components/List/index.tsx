@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, FlatList } from "react-native";
 import Card from "../Card";
 import {styles} from './styles'
+import {useRecoilValue} from 'recoil'
+import {offlineState} from '../../recoilStore/Atoms'
 
 interface Props {
   title: any;
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const List = ({navigation, title, content }:Props) => {
+  const offline = useRecoilValue(offlineState);
   return (
     <View style={styles.list}>
       <View>
@@ -18,7 +21,7 @@ const List = ({navigation, title, content }:Props) => {
       <View>
         <FlatList
           data={content}
-          horizontal={true}
+          horizontal={offline?true:false}
           renderItem={({ item }) => (
             <Card navigation={navigation} item={item} />
           )}

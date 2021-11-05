@@ -5,10 +5,12 @@ import getMovie from "./getMovie"
 import getMovieTrailer from "./getMovieTrailer"
 
 
+
 export {
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
   getMovie,
   getMovieTrailer,
+
 };

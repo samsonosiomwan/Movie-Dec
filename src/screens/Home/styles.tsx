@@ -3,8 +3,10 @@
 
     export const styles = StyleSheet.create({
       container: {
-        
         backgroundColor: Colors.black,
-      
+      },
+      offlineContainer: {
+        backgroundColor: Colors.black,
+        paddingTop:"10%"
       },
     });

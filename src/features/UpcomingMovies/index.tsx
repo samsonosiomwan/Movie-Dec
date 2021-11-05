@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { View, Dimensions, ActivityIndicator } from "react-native";
-import {useRecoilState} from "recoil"
-import {errorState} from "../../recoilStore/Atoms"
+import { View, Dimensions, ActivityIndicator, Alert } from "react-native";
+import { useRecoilState } from "recoil";
+import { errorState } from "../../recoilStore/Atoms";
 import { getUpcomingMovies } from "../../services/api/movies";
 import { SliderBox } from "react-native-image-slider-box";
-import {styles} from './styles'
-import {IMAGE_URI} from '../../utils/envConstants'
+import { styles } from "./styles";
+import { IMAGE_URI } from "../../utils/envConstants";
 
 // interface IpopularMovies {
 //     movieImages:string
 // }
 //getting the screen height
-const dimentions = Dimensions.get('screen');
-console.log("hhhhhhh",dimentions)
+const dimentions = Dimensions.get("screen");
+console.log("hhhhhhh", dimentions);
 const UpcomingMovies = () => {
   // const { isLoading, error, data } = getPopularMovies();
 
   const { isLoading, error, data } = getUpcomingMovies();
   const [movieImagePaths, setMovieImagePaths] = useState([]);
-    const [upComingMoviesError, setUpComingMoviesError] = useRecoilState(errorState);
-  
-  if(error){
-    let upComingMovies:any = error
-    setUpComingMoviesError({ ...upComingMoviesError, upComingMovies});
+  const [upComingMoviesError, setUpComingMoviesError] =
+    useRecoilState(errorState);
+
+  if (error) {
+    let upComingMovies: any = error;
+    setUpComingMoviesError({ ...upComingMoviesError, upComingMovies });
   }
   const movies: any = data?.data?.results;
 
@@ -52,6 +53,9 @@ const UpcomingMovies = () => {
           sliderBoxHeight={dimentions.height / 1.5}
           autoplay={true}
           circleloop={true}
+          onPress={() => {
+            Alert.alert("Upcoming movie");
+          }}
         />
       )}
     </View>

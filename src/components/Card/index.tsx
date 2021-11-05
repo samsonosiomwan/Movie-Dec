@@ -3,6 +3,8 @@ import {TouchableOpacity, Image, Text} from 'react-native'
 import {styles} from './styles'
 import {IMAGE_URI} from '../../utils/envConstants'
 import {imagePlaceHolder} from '../../utils/ImagePlaceHolder'
+import { useRecoilValue } from "recoil";
+import { offlineState } from "../../recoilStore/Atoms";
 
 interface Props {
   item: Record<string, any>;
@@ -10,14 +12,21 @@ interface Props {
 }
 
 const Card = ({ navigation,item }: Props) => {
+const offline = useRecoilValue(offlineState);
+
   return (
-    <TouchableOpacity onPress={()=>{navigation.navigate("Detail",{movieId: item.id})}} style={styles.container}>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("Detail", { movieId: item.id });
+      }}
+      style={offline ? styles.container : styles.offlineContainer }
+    >
       <Image
         resizeMode="cover"
-        style={styles.image}
+        style={offline ? styles.image : styles.offlineImage}
         source={
           item.poster_path
-            ? { uri: IMAGE_URI + item.poster_path }
+            ? { uri: IMAGE_URI + item.poster_path || item.backdrop_path }
             : imagePlaceHolder
         }
       />
