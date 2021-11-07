@@ -5,24 +5,31 @@ import Colors from "../../utils/themes/colors";
 import { styles } from "./styles";
 import PropTypes from 'prop-types'
 
-const propTypes = {
-  main:PropTypes.bool
-}
+// const propTypes = {
+//   home:PropTypes.bool
+// }
 
-const defaultProps = {
-  main:false
-} 
+// const defaultProps = {
+//   home:false
+// } 
 
 
-const Navbar = ({ navigation, main }) => {
+const Navbar = ({ navigation, home=false }) => {
   return (
     <SafeAreaView style={styles.container}>
-      {main ? (
+      {home ? (
         <View style={styles.iconContanier}>
           <Image
             style={styles.logo}
             source={require("../../Assets/png/decagonLogo.png")}
           />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Search");
+            }}
+          >
+            <Icon name={"search-outline"} size={30} color={Colors.white} />
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("Settings");
@@ -56,7 +63,7 @@ const Navbar = ({ navigation, main }) => {
   );
 };
 
-Navbar.propTypes = propTypes
-Navbar.propTypes = defaultProps
+// Navbar.propTypes = propTypes
+// Navbar.propTypes = defaultProps
 
 export default Navbar;

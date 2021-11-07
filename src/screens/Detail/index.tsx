@@ -39,6 +39,7 @@ const Detail = ({ route }) => {
 
   const addToFavorite = async () => {
     await setFavoriteMovie([...favoritMovie, movieDetail]);
+    alert("movie added")
   };
 
   //  console.log(">>>>",favoritMovie);

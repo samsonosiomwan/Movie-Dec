@@ -1,5 +1,5 @@
 import React, { useEffect} from "react";
-import { ActivityIndicator,  View } from "react-native";
+import { ActivityIndicator,  Text,  View } from "react-native";
 import List from "../../components/List";
 import { styles } from "./styles";
 import { favoriteMovieState } from "../../recoilStore/Atoms";
@@ -33,12 +33,19 @@ const FavoriteMovies = ({ navigation }) => {
   return (
     <View style={styles.carousel}>
       {favMovie === null && <ActivityIndicator />}
-      {favMovie && (
+      {favMovie.length !== 0 ? (
         <List
           navigation={navigation}
           content={favMovie}
           title="Favorite Movies"
         />
+      ) : (
+        <View style={styles.noFavMsgContainer}>
+          <Text style={styles.favMovieHeading}>Favorite Movie</Text>
+          <Text style={styles.favMovieText}>
+            You dont have any favorite movie, Click a movie to add favorites
+          </Text>
+        </View>
       )}
     </View>
   );

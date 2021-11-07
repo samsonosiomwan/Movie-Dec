@@ -59,3 +59,80 @@ const Home = ({ navigation }) => {
 };
 
 export default Home;
+
+// import React, { useState, useEffect } from "react";
+// import { ScrollView, Text, View } from "react-native";
+// import PopularMovies from "../../features/PopularMovies";
+// import UpcomingMovies from "../../features/UpcomingMovies";
+// import TopRatedMovies from "../../features/TopRatedMovies";
+// import { useRecoilValue } from "recoil";
+// import { errorState, favoriteMovieState } from "../../recoilStore/Atoms";
+// import Error from "../../components/Error";
+// import { styles } from "./styles";
+// import FavoriteMovies from "../../features/FavoriteMovies";
+// import * as Network from "expo-network";
+// import { useRecoilState } from "recoil";
+// import { offlineState } from "../../recoilStore/Atoms";
+
+// const Home = ({ navigation }) => {
+//   const error = useRecoilValue(errorState);
+//   // const favoriteMovie = useRecoilValue(favoriteMovieState);
+//   const favMovie = useRecoilValue(favoriteMovieState);
+
+
+//   const [online, setOnline] = useState(true);
+//   const [offlineStatus, setOfflineStatus] = useRecoilState(offlineState);
+//   useEffect(() => {
+//     Network.getNetworkStateAsync()
+//       .then((value) => {
+//         setOnline(value.isConnected);
+//         setOfflineStatus(value.isConnected);
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   }, []);
+
+//   return (
+//     <>
+//       {online !== true ? (
+//         <ScrollView style={styles.offlineContainer}>
+//           <FavoriteMovies navigation={navigation} />
+//         </ScrollView>
+//       ) : (
+//         <ScrollView style={styles.container}>
+//           {error.popularMovies ||
+//           error.topRatedMovies ||
+//           error.upComingMovies ? (
+//             <Error
+//               erroText1={error.popularMovies}
+//               erroText2={error.topRatedMovies}
+//               errorText3={error.upComingMovies}
+//             />
+//           ) : (
+//             <>
+//               <UpcomingMovies />
+//               <PopularMovies navigation={navigation} />
+//               <TopRatedMovies navigation={navigation} />
+//               {favMovie === null ? (
+//                 <View>
+//                   <Text style={styles.favMovieHeading}>Favorite Movie</Text>
+//                   <Text style={styles.favMovieText}>
+//                     You dont have any favorite movie, Click a movie to add
+//                     favorites
+//                   </Text>
+//                 </View>
+//               ) : (
+//                 <FavoriteMovies navigation={navigation} />
+//               )}
+//             </>
+//           )}
+//           {/* <FavoriteMovies navigation={navigation} /> */}
+//         </ScrollView>
+//       )}
+//     </>
+//   );
+// };
+
+// export default Home;
+
