@@ -18,7 +18,7 @@ import PlayButton from "../../components/PlayButton";
 import VideoPlayer from "../../components/Video";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { favoriteMovieState } from "../../recoilStore/Atoms";
-import { constSelector, useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const Detail = ({ route }) => {
   const movieId = route.params.movieId;
@@ -30,7 +30,6 @@ const Detail = ({ route }) => {
 
   //get favorite from recoil state
   const getfavorite = useRecoilValue(favoriteMovieState);
-  //  console.log("here>>>>>>>>>", getfavorite);
 
   const [status, setStatus] = useState(null);
   const showVideo = () => {
@@ -39,10 +38,9 @@ const Detail = ({ route }) => {
 
   const addToFavorite = async () => {
     await setFavoriteMovie([...favoritMovie, movieDetail]);
-    alert("movie added")
+    alert("movie added");
   };
 
-  //  console.log(">>>>",favoritMovie);
   const saveFavorite = async () => {
     try {
       const jasonValue = JSON.stringify(getfavorite);
@@ -51,16 +49,10 @@ const Detail = ({ route }) => {
     } catch (error) {
       console.log("storing", error);
     }
-
-    //set recoil state
-    //  useEffect(() => {
-    //    saveFavorite(favoritMovie);
-    //  }, [favoritMovie]);
   };
 
   const getValue = () => {
     AsyncStorage.clear().then((value) => {
-      // let result = JSON.parse(value);
       setStatus(value);
     });
     console.log("new statie++", status);
@@ -70,7 +62,6 @@ const Detail = ({ route }) => {
     saveFavorite();
   }, []);
 
-  // console.log("i am here now", data?.data)
   return (
     <>
       <ScrollView style={styles.background}>
@@ -97,7 +88,7 @@ const Detail = ({ route }) => {
               </View>
 
               <Text style={styles.movieTitle}>{movieDetail.title}</Text>
-              {/* <Text>Original Language : {movieDetail.original_language}</Text> */}
+
               {movieDetail.spoken_languages && (
                 <View style={styles.languageContainer}>
                   {movieDetail?.spoken_languages.map((spokenLanguage) => {
@@ -131,20 +122,10 @@ const Detail = ({ route }) => {
               <Text
                 style={styles.popularity}
               >{`Vote Count : ${movieDetail.vote_count} `}</Text>
-              
-                {/* condition to check if movie has been added to favourite */}
 
-              {/* {getfavorite[0].id === movieId || undefined ? (
-                <Text style={styles.addToFavorite}>Added to favorite</Text>
-              ) : ( */}
-                <TouchableOpacity onPress={addToFavorite}>
-                  <Text style={styles.addToFavorite}>Add to favorite</Text>
-                </TouchableOpacity>
-              {/* )} */}
-              {/* <TouchableOpacity onPress={getValue}>
-                <Text style={styles.addToFavorite}>get value </Text>
-                <Text style={styles.addToFavorite}>{status} </Text>
-              </TouchableOpacity> */}
+              <TouchableOpacity onPress={addToFavorite}>
+                <Text style={styles.addToFavorite}>Add to favorite</Text>
+              </TouchableOpacity>
             </View>
           </>
         )}

@@ -3,18 +3,9 @@ import { SafeAreaView, View, TouchableOpacity, Image } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Colors from "../../utils/themes/colors";
 import { styles } from "./styles";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-// const propTypes = {
-//   home:PropTypes.bool
-// }
-
-// const defaultProps = {
-//   home:false
-// } 
-
-
-const Navbar = ({ navigation, home=false }) => {
+const Navbar = ({ navigation, home = false }) => {
   return (
     <SafeAreaView style={styles.container}>
       {home ? (
@@ -62,8 +53,5 @@ const Navbar = ({ navigation, home=false }) => {
     </SafeAreaView>
   );
 };
-
-// Navbar.propTypes = propTypes
-// Navbar.propTypes = defaultProps
 
 export default Navbar;

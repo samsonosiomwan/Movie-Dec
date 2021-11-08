@@ -32,6 +32,7 @@
     "react-native-youtube": "^2.0.2",
     "react-native-youtube-iframe": "^2.1.2",
     "react-query": "^3.29.0",
+    "react-toastify": "^8.1.0",
     "recoil": "^0.4.1"
   },
   "devDependencies": {

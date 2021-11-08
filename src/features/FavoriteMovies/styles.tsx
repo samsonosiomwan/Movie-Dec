@@ -14,10 +14,7 @@ export const styles = StyleSheet.create({
     paddingRight: "24%",
     paddingTop: "2%",
   },
-  noFavMsgContainer: {
-    //  justifyContent: "center",
-    // alignItems: "center",
-  },
+
   favMovieHeading: {
     fontSize: 20,
     fontWeight: "bold",

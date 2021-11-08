@@ -15,6 +15,5 @@ export const styles = StyleSheet.create({
   logo: {
     width: 30,
     height: 30,
-    // position: "absolute",
   },
 });

@@ -3,7 +3,6 @@ import { View, Dimensions, ActivityIndicator } from "react-native";
 import { useRecoilState } from "recoil";
 import { errorState } from "../../recoilStore/Atoms";
 import { getPopularMovies } from "../../services/api/movies";
-import { SliderBox } from "react-native-image-slider-box";
 import { styles } from "./style";
 import List from "../../components/List";
 
@@ -27,8 +26,6 @@ const PopularMovies = ({ navigation }) => {
   useEffect(() => {
     setPopularMovies(movies);
   }, [movies]);
-
-  // console.log("here too", popularMovies);
 
   return (
     <View style={styles.carousel}>

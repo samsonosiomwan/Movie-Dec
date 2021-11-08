@@ -6,8 +6,6 @@ import { getTopRatedMovies } from "../../services/api/movies";
 import { styles } from "./styles";
 import List from "../../components/List";
 
-const dimentions = Dimensions.get("screen");
-
 const TopRatedMovies = ({ navigation }) => {
   const { isLoading, error, data } = getTopRatedMovies();
 
